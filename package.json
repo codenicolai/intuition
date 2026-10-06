@@ -20,7 +20,9 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^2.5.14",
+    "@open-wc/testing": "^5.0.0",
     "@web/dev-server": "^1.0.0",
+    "@web/dev-server-esbuild": "^2.0.0",
     "@web/test-runner": "^1.0.0",
     "@web/test-runner-playwright": "^1.0.0",
     "esbuild": "^0.28.2",

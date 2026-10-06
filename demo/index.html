@@ -5,9 +5,79 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Intuition UI demo</title>
     <script type="module" src="../packages/core/dist/index.js"></script>
+    <style>
+      body {
+        font-family: system-ui, sans-serif;
+        max-width: 40rem;
+        margin: 0;
+        padding: 1rem 1.5rem;
+      }
+      h1 {
+        margin: 0 0 3rem;
+        line-height: 0;
+      }
+      h2 {
+        font-size: 1rem;
+        font-weight: 600;
+        margin: 0 0 0.75rem;
+      }
+      section {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        align-items: center;
+        margin-bottom: 1.5rem;
+      }
+      .custom {
+        --iu-button-bg: #7c3aed;
+        --iu-button-bg-hover: #6d28d9;
+        --iu-button-radius: 999px;
+      }
+    </style>
   </head>
   <body>
-    <h1>Intuition UI</h1>
-    <p>Components will appear here from Phase 1 on.</p>
+    <h1>
+      <img src="../docs/assets/logo.png" alt="Intuition UI" width="160" />
+    </h1>
+
+    <h2>Variants</h2>
+    <section>
+      <iu-button>Primary</iu-button>
+      <iu-button variant="secondary">Secondary</iu-button>
+      <iu-button variant="ghost">Ghost</iu-button>
+      <iu-button disabled>Disabled</iu-button>
+    </section>
+
+    <h2>Sizes</h2>
+    <section>
+      <iu-button size="sm">Small</iu-button>
+      <iu-button size="md">Medium</iu-button>
+      <iu-button size="lg">Large</iu-button>
+    </section>
+
+    <h2>Custom properties</h2>
+    <section>
+      <iu-button class="custom">Custom</iu-button>
+    </section>
+
+    <h2>Form</h2>
+    <form id="form">
+      <section>
+        <input name="prompt" placeholder="Type something" />
+        <iu-button type="submit">Send</iu-button>
+        <iu-button type="reset" variant="secondary">Reset</iu-button>
+      </section>
+      <output id="out"></output>
+    </form>
+
+    <script type="module">
+      const form = document.getElementById('form');
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const data = new FormData(form);
+        document.getElementById('out').textContent =
+          `Submitted: ${data.get('prompt')}`;
+      });
+    </script>
   </body>
 </html>
