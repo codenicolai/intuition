@@ -1,0 +1,29 @@
+{
+  "name": "intuition-ui",
+  "private": true,
+  "description": "Agnostic AI-first component library built on Web Components.",
+  "license": "MIT",
+  "author": "Leonardo Nicolai Padilha",
+  "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "npm run build --workspaces --if-present",
+    "dev": "web-dev-server",
+    "test": "web-test-runner",
+    "lint": "biome check .",
+    "format": "biome format --write ."
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.5.14",
+    "@web/dev-server": "^1.0.0",
+    "@web/test-runner": "^1.0.0",
+    "@web/test-runner-playwright": "^1.0.0",
+    "esbuild": "^0.28.2",
+    "typescript": "^7.0.2"
+  }
+}

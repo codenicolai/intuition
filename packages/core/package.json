@@ -1,0 +1,27 @@
+{
+  "name": "@intuition-ui/core",
+  "version": "0.0.0",
+  "description": "Framework-agnostic Web Components for generative AI interfaces.",
+  "license": "MIT",
+  "author": "Leonardo Nicolai Padilha",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./cdn": "./dist/cdn/intuition.min.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json && npm run build:cdn",
+    "build:cdn": "esbuild dist/index.js --bundle --format=esm --minify --outfile=dist/cdn/intuition.min.js"
+  },
+  "dependencies": {
+    "lit": "^3.3.3"
+  }
+}
