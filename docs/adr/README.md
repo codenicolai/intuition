@@ -13,5 +13,7 @@
 | [0009](0009-mit-license.md) | MIT license | accepted | 0 |
 | [0010](0010-repository-language-english.md) | Repository language: English | accepted | 0 |
 | [0011](0011-python-backends-demo-only-outside-the-metrics.md) | Python backends: demo only, outside the metrics | accepted | 0 |
+| [0012](0012-component-conventions.md) | Component conventions (styles, Shadow DOM, forms, Button API) | accepted | 1 |
+| [0013](0013-test-setup.md) | Test setup (tests outside `src`, esbuild, @open-wc/testing) | accepted | 1 |
 
 Template: [template.md](template.md). Revised ADRs are never deleted; they are marked "superseded by ADR NNNN".

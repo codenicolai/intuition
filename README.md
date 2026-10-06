@@ -1,10 +1,15 @@
-# Intuition UI
+<h1 align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/assets/logo-dark.png" />
+    <img src="docs/assets/logo.png" alt="Intuition UI" width="280" />
+  </picture>
+</h1>
 
 Agnostic, AI-first component library for web applications, built on Web Components.
 
 Each component is defined once by a **base signature** (the Custom Elements Manifest). From it derive the framework-agnostic implementation, idiomatic usage in React, Vue and Svelte, and documentation that helps AI tools generate correct code.
 
-> Status: Phase 0 (setup). Not published yet.
+> Status: Phase 1 (`iu-button`). Not published yet.
 
 ## Packages
 
