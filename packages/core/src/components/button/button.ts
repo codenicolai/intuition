@@ -1,4 +1,4 @@
-import { html, LitElement } from 'lit';
+import { html, LitElement, type PropertyValues } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { buttonStyles } from './button.styles.js';
 
@@ -15,13 +15,15 @@ export type ButtonType = 'button' | 'submit' | 'reset';
  *
  * @csspart base - The internal `<button>` element.
  *
+ * @cssprop --iu-button-font-family - Font family. Defaults to the system UI font; use `inherit` to follow the page.
+ * @cssprop --iu-button-font-size - Font size. Defaults depend on `size`.
  * @cssprop --iu-button-radius - Corner radius.
- * @cssprop --iu-button-font - Font shorthand.
  * @cssprop --iu-button-bg - Background color.
  * @cssprop --iu-button-fg - Text color.
  * @cssprop --iu-button-border - Border color.
  * @cssprop --iu-button-bg-hover - Background color on hover.
- * @cssprop --iu-button-focus-ring - Focus outline color.
+ * @cssprop --iu-button-shadow - Box shadow.
+ * @cssprop --iu-button-focus-ring - Focus ring color.
  */
 @customElement('iu-button')
 export class IuButton extends LitElement {
@@ -46,6 +48,14 @@ export class IuButton extends LitElement {
 
   private readonly internals: ElementInternals;
 
+  /**
+   * Native submit button placed in the form while `type` is `submit`.
+   * Browsers only submit a form on Enter (implicit submission) when the
+   * form has a native submit button; a form-associated custom element
+   * does not count as one.
+   */
+  private proxySubmit: HTMLButtonElement | null = null;
+
   constructor() {
     super();
     this.internals = this.attachInternals();
@@ -56,6 +66,55 @@ export class IuButton extends LitElement {
     return this.internals.form;
   }
 
+  override connectedCallback(): void {
+    super.connectedCallback();
+    this.syncProxySubmit();
+  }
+
+  override disconnectedCallback(): void {
+    super.disconnectedCallback();
+    this.removeProxySubmit();
+  }
+
+  /** Called by the browser when the element moves to another form. */
+  formAssociatedCallback(): void {
+    this.syncProxySubmit();
+  }
+
+  protected override updated(changed: PropertyValues<this>): void {
+    if (changed.has('type') || changed.has('disabled')) {
+      this.syncProxySubmit();
+    }
+  }
+
+  private syncProxySubmit(): void {
+    const form = this.internals.form;
+    if (this.type !== 'submit' || !form || !this.isConnected) {
+      this.removeProxySubmit();
+      return;
+    }
+    if (!this.proxySubmit) {
+      const proxy = document.createElement('button');
+      proxy.type = 'submit';
+      proxy.tabIndex = -1;
+      proxy.setAttribute('aria-hidden', 'true');
+      proxy.setAttribute('data-iu-proxy', '');
+      proxy.style.cssText =
+        'position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);border:0;white-space:nowrap;';
+      this.proxySubmit = proxy;
+    }
+    // A disabled default button blocks implicit submission, like a native button.
+    this.proxySubmit.disabled = this.disabled;
+    if (this.proxySubmit.form !== form) {
+      form.append(this.proxySubmit);
+    }
+  }
+
+  private removeProxySubmit(): void {
+    this.proxySubmit?.remove();
+    this.proxySubmit = null;
+  }
+
   private handleClick(event: MouseEvent): void {
     if (this.disabled) {
       event.preventDefault();
@@ -64,7 +123,8 @@ export class IuButton extends LitElement {
     }
     const form = this.internals.form;
     if (!form) return;
-    if (this.type === 'submit') form.requestSubmit();
+    if (this.type === 'submit')
+      form.requestSubmit(this.proxySubmit ?? undefined);
     if (this.type === 'reset') form.reset();
   }
 

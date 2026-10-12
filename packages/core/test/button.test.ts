@@ -1,4 +1,5 @@
 import { expect, fixture, html } from '@open-wc/testing';
+import { sendKeys } from '@web/test-runner-commands';
 import '../src/components/button/button.js';
 import type { IuButton } from '../src/components/button/button.js';
 
@@ -58,6 +59,66 @@ describe('iu-button', () => {
     const el = form.querySelector('iu-button') as IuButton;
     el.shadowRoot?.querySelector('button')?.click();
     expect(input.value).to.equal('initial');
+  });
+
+  it('submits the form when Enter is pressed in a field', async () => {
+    const form = await fixture<HTMLFormElement>(html`
+      <form>
+        <input name="q" />
+        <iu-button type="submit">Send</iu-button>
+      </form>
+    `);
+    let submitted = 0;
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      submitted++;
+    });
+    const input = form.querySelector('input') as HTMLInputElement;
+    input.focus();
+    await sendKeys({ press: 'Enter' });
+    expect(submitted).to.equal(1);
+  });
+
+  it('does not submit on Enter when disabled', async () => {
+    const form = await fixture<HTMLFormElement>(html`
+      <form>
+        <input name="q" />
+        <iu-button type="submit" disabled>Send</iu-button>
+      </form>
+    `);
+    let submitted = 0;
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      submitted++;
+    });
+    (form.querySelector('input') as HTMLInputElement).focus();
+    await sendKeys({ press: 'Enter' });
+    expect(submitted).to.equal(0);
+  });
+
+  it('removes the proxy submit button when type changes or it disconnects', async () => {
+    const form = await fixture<HTMLFormElement>(html`
+      <form><iu-button type="submit">Send</iu-button></form>
+    `);
+    const el = form.querySelector('iu-button') as IuButton;
+    expect(form.querySelectorAll('[data-iu-proxy]').length).to.equal(1);
+    el.type = 'button';
+    await el.updateComplete;
+    expect(form.querySelectorAll('[data-iu-proxy]').length).to.equal(0);
+    el.type = 'submit';
+    await el.updateComplete;
+    expect(form.querySelectorAll('[data-iu-proxy]').length).to.equal(1);
+    el.remove();
+    expect(form.querySelectorAll('[data-iu-proxy]').length).to.equal(0);
+  });
+
+  it('uses the system font by default, independent of the page font', async () => {
+    const wrapper = await fixture<HTMLDivElement>(html`
+      <div style="font-family: serif"><iu-button>Send</iu-button></div>
+    `);
+    const el = wrapper.querySelector('iu-button') as IuButton;
+    const inner = el.shadowRoot?.querySelector('button') as HTMLButtonElement;
+    expect(getComputedStyle(inner).fontFamily).to.contain('system-ui');
   });
 
   it('is accessible', async () => {
