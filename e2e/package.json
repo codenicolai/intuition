@@ -1,0 +1,30 @@
+{
+  "name": "intuition-e2e",
+  "private": true,
+  "type": "module",
+  "description": "Cross-framework integration tests for Intuition UI (ADR 0014).",
+  "scripts": {
+    "test": "playwright test",
+    "dev:react": "vite --config apps/react/vite.config.ts",
+    "dev:vue": "vite --config apps/vue/vite.config.ts",
+    "dev:svelte": "vite --config apps/svelte/vite.config.ts"
+  },
+  "dependencies": {
+    "@intuition-ui/core": "file:../packages/core",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "svelte": "^5.57.0",
+    "vue": "^3.5.42"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "@sveltejs/vite-plugin-svelte": "^7.3.0",
+    "@types/node": "^24.13.3",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.7",
+    "@vitejs/plugin-react": "^6.1.1",
+    "@vitejs/plugin-vue": "^6.0.8",
+    "typescript": "~6.0.2",
+    "vite": "^8.3.0"
+  }
+}
