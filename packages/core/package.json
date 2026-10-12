@@ -7,19 +7,24 @@
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "customElements": "node_modules/.cache/cem-check/custom-elements.json",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
     },
-    "./cdn": "./dist/cdn/intuition.min.js"
+    "./cdn": "./dist/cdn/intuition.min.js",
+    "./custom-elements.json": "./custom-elements.json"
   },
   "files": [
-    "dist"
+    "dist",
+    "custom-elements.json"
   ],
   "scripts": {
-    "build": "tsc -p tsconfig.json && npm run build:cdn",
-    "build:cdn": "esbuild dist/index.js --bundle --format=esm --minify --outfile=dist/cdn/intuition.min.js"
+    "build": "npm run analyze && tsc -p tsconfig.json && npm run build:cdn",
+    "build:cdn": "esbuild dist/index.js --bundle --format=esm --minify --outfile=dist/cdn/intuition.min.js",
+    "analyze": "cem analyze --config custom-elements-manifest.config.mjs",
+    "manifest:check": "node scripts/check-manifest.mjs"
   },
   "dependencies": {
     "lit": "^3.3.3"

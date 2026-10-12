@@ -1,6 +1,12 @@
 {
   "files": {
-    "includes": ["**", "!**/dist", "!**/node_modules"]
+    "includes": [
+      "**",
+      "!**/dist",
+      "!**/node_modules",
+      "!**/custom-elements.json",
+      "!e2e"
+    ]
   },
   "formatter": {
     "indentStyle": "space",

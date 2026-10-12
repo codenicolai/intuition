@@ -1,0 +1,223 @@
+{
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "src/index.ts",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ButtonSize",
+          "declaration": {
+            "name": "ButtonSize",
+            "module": "./components/button/button.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "ButtonType",
+          "declaration": {
+            "name": "ButtonType",
+            "module": "./components/button/button.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "ButtonVariant",
+          "declaration": {
+            "name": "ButtonVariant",
+            "module": "./components/button/button.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "IuButton",
+          "declaration": {
+            "name": "IuButton",
+            "module": "./components/button/button.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/button/button.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "A button that works in any framework and inside native forms.",
+          "name": "IuButton",
+          "cssProperties": [
+            {
+              "description": "Font family. Defaults to the system UI font; use `inherit` to follow the page.",
+              "name": "--iu-button-font-family"
+            },
+            {
+              "description": "Font size. Defaults depend on `size`.",
+              "name": "--iu-button-font-size"
+            },
+            {
+              "description": "Corner radius.",
+              "name": "--iu-button-radius"
+            },
+            {
+              "description": "Background color.",
+              "name": "--iu-button-bg"
+            },
+            {
+              "description": "Text color.",
+              "name": "--iu-button-fg"
+            },
+            {
+              "description": "Border color.",
+              "name": "--iu-button-border"
+            },
+            {
+              "description": "Background color on hover.",
+              "name": "--iu-button-bg-hover"
+            },
+            {
+              "description": "Box shadow.",
+              "name": "--iu-button-shadow"
+            },
+            {
+              "description": "Focus ring color.",
+              "name": "--iu-button-focus-ring"
+            }
+          ],
+          "cssParts": [
+            {
+              "description": "The internal `<button>` element.",
+              "name": "base"
+            }
+          ],
+          "slots": [
+            {
+              "description": "The button label.",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "variant",
+              "type": {
+                "text": "'primary' | 'secondary' | 'ghost'"
+              },
+              "default": "'primary'",
+              "description": "Visual style.",
+              "attribute": "variant",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "'sm' | 'md' | 'lg'"
+              },
+              "default": "'md'",
+              "description": "Size of the button.",
+              "attribute": "size",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Disables the button and prevents interaction.",
+              "attribute": "disabled",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "type",
+              "type": {
+                "text": "'button' | 'submit' | 'reset'"
+              },
+              "default": "'button'",
+              "description": "Behavior inside a form, like the native `type` attribute.",
+              "attribute": "type"
+            },
+            {
+              "kind": "field",
+              "name": "form",
+              "type": {
+                "text": "HTMLFormElement | null"
+              },
+              "description": "The form this button is associated with, if any.",
+              "readonly": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "variant",
+              "type": {
+                "text": "'primary' | 'secondary' | 'ghost'"
+              },
+              "default": "'primary'",
+              "description": "Visual style.",
+              "fieldName": "variant"
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "'sm' | 'md' | 'lg'"
+              },
+              "default": "'md'",
+              "description": "Size of the button.",
+              "fieldName": "size"
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Disables the button and prevents interaction.",
+              "fieldName": "disabled"
+            },
+            {
+              "name": "type",
+              "type": {
+                "text": "'button' | 'submit' | 'reset'"
+              },
+              "default": "'button'",
+              "description": "Behavior inside a form, like the native `type` attribute.",
+              "fieldName": "type"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "summary": "Triggers an action or submits a form.",
+          "tagName": "iu-button",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "IuButton",
+          "declaration": {
+            "name": "IuButton",
+            "module": "src/components/button/button.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "iu-button",
+          "declaration": {
+            "name": "IuButton",
+            "module": "src/components/button/button.ts"
+          }
+        }
+      ]
+    }
+  ]
+}

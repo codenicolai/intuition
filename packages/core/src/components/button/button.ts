@@ -2,10 +2,6 @@ import { html, LitElement, type PropertyValues } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { buttonStyles } from './button.styles.js';
 
-export type ButtonVariant = 'primary' | 'secondary' | 'ghost';
-export type ButtonSize = 'sm' | 'md' | 'lg';
-export type ButtonType = 'button' | 'submit' | 'reset';
-
 /**
  * A button that works in any framework and inside native forms.
  *
@@ -27,24 +23,28 @@ export type ButtonType = 'button' | 'submit' | 'reset';
  */
 @customElement('iu-button')
 export class IuButton extends LitElement {
+  /** @internal */
   static override styles = buttonStyles;
+  /** @internal */
   static formAssociated = true;
+  /** @internal */
   static override shadowRootOptions: ShadowRootInit = {
     ...LitElement.shadowRootOptions,
     delegatesFocus: true,
   };
 
   /** Visual style. */
-  @property({ reflect: true }) variant: ButtonVariant = 'primary';
+  @property({ reflect: true }) variant: 'primary' | 'secondary' | 'ghost' =
+    'primary';
 
   /** Size of the button. */
-  @property({ reflect: true }) size: ButtonSize = 'md';
+  @property({ reflect: true }) size: 'sm' | 'md' | 'lg' = 'md';
 
   /** Disables the button and prevents interaction. */
   @property({ type: Boolean, reflect: true }) disabled = false;
 
   /** Behavior inside a form, like the native `type` attribute. */
-  @property() type: ButtonType = 'button';
+  @property() type: 'button' | 'submit' | 'reset' = 'button';
 
   private readonly internals: ElementInternals;
 
@@ -76,7 +76,10 @@ export class IuButton extends LitElement {
     this.removeProxySubmit();
   }
 
-  /** Called by the browser when the element moves to another form. */
+  /**
+   * Called by the browser when the element moves to another form.
+   * @internal
+   */
   formAssociatedCallback(): void {
     this.syncProxySubmit();
   }
@@ -147,3 +150,7 @@ declare global {
     'iu-button': IuButton;
   }
 }
+
+export type ButtonVariant = IuButton['variant'];
+export type ButtonSize = IuButton['size'];
+export type ButtonType = IuButton['type'];

@@ -15,15 +15,17 @@
     "build": "npm run build --workspaces --if-present",
     "dev": "web-dev-server",
     "test": "web-test-runner",
-    "lint": "biome check .",
+    "lint": "biome check . && npm run manifest:check --workspaces --if-present",
     "format": "biome format --write ."
   },
   "devDependencies": {
     "@biomejs/biome": "^2.5.14",
+    "@custom-elements-manifest/analyzer": "^0.11.0",
     "@open-wc/testing": "^5.0.0",
     "@web/dev-server": "^1.0.0",
     "@web/dev-server-esbuild": "^2.0.0",
     "@web/test-runner": "^1.0.0",
+    "@web/test-runner-commands": "^1.0.1",
     "@web/test-runner-playwright": "^1.0.0",
     "esbuild": "^0.28.2",
     "typescript": "^7.0.2"

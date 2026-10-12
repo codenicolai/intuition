@@ -51,7 +51,7 @@ Every major change runs the same integration suite in three environments before 
 
 - Cross-framework regressions are caught before release, and every major step leaves dated visual evidence for the thesis.
 - Snapshots are not versioned in git; they must be backed up or copied into the thesis material when needed.
-- The suite and the three apps currently live outside the repository. Moving them into the repository (for example `e2e/`) would make runs reproducible by anyone; this is a separate decision.
+- The suite and the three apps live in `e2e/`, an isolated npm package outside the root workspaces (`file:../packages/core`), so the root install stays light. See `e2e/README.md`.
 - The first run (2026-10-12, after the Enter and font fixes): 27/27 tests passed, button screenshots identical across React, Vue and Svelte.
 
 ## Traceability
