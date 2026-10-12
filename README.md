@@ -9,7 +9,7 @@ Agnostic, AI-first component library for web applications, built on Web Componen
 
 Each component is defined once by a **base signature** (the Custom Elements Manifest). From it derive the framework-agnostic implementation, idiomatic usage in React, Vue and Svelte, and documentation that helps AI tools generate correct code.
 
-> Status: Phase 1 (`iu-button`). Not published yet.
+> Status: Phase 2 (base signature). Not published yet.
 
 ## Packages
 
@@ -40,10 +40,11 @@ Requires Node 22+.
 
 ```sh
 npm install
-npm run build   # tsc (ESM) + esbuild (CDN bundle)
+npm run build   # custom-elements.json + tsc (ESM) + esbuild (CDN bundle)
 npm run dev     # @web/dev-server, opens /demo/
 npm test        # @web/test-runner (Chromium via Playwright)
-npm run lint    # Biome
+npm run lint    # Biome + custom-elements.json up to date
+npm run analyze -w @intuition-ui/core   # regenerate custom-elements.json
 ```
 
 First run of the tests may require `npx playwright install chromium`.
@@ -51,7 +52,6 @@ First run of the tests may require `npx playwright install chromium`.
 ## Documentation
 
 - Architecture decisions: [`docs/adr/`](docs/adr/)
-- Development journal: [`docs/JOURNAL.md`](docs/JOURNAL.md)
 
 ## Academic context
 

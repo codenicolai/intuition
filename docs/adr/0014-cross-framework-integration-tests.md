@@ -6,7 +6,7 @@
 
 ## Context
 
-Unit tests in `@web/test-runner` (ADR 0013) run the component in isolation. They did not catch two problems that only appeared when `iu-button` was used inside real framework apps: Enter not submitting the form and the font changing with the host page (see `docs/JOURNAL.md`, 2026-10-12). The research question is about reuse across frameworks (RNF01, RNF02), so integration in each framework must be verified as part of the process, and the evidence must be kept for the thesis.
+Unit tests in `@web/test-runner` (ADR 0013) run the component in isolation. They did not catch two problems that only appeared when `iu-button` was used inside real framework apps: Enter not submitting the form and the font changing with the host page. The research question is about reuse across frameworks (RNF01, RNF02), so integration in each framework must be verified as part of the process, and the evidence must be kept for the thesis.
 
 ## Decision
 
@@ -38,7 +38,7 @@ Every major change runs the same integration suite in three environments before 
 
 **Evidence**
 - Snapshots are saved to `snapshots/` (git-ignored), one folder per framework, file names prefixed with the run date (`YYYY-MM-DD_`), plus a dated `README.md` with the results table.
-- Results and integration effort (lines and files changed per framework) are recorded in `docs/JOURNAL.md`.
+- Results and integration effort (lines and files changed per framework) are recorded in the dated `README.md` of each run in `snapshots/`.
 
 ## Alternatives considered
 
