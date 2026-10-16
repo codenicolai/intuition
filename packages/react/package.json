@@ -1,0 +1,41 @@
+{
+  "name": "@intuition-ui/react",
+  "version": "0.0.0",
+  "description": "React components for Intuition UI, generated from the Custom Elements Manifest.",
+  "license": "MIT",
+  "author": "Leonardo Nicolai Padilha",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "generate": "node scripts/generate.mjs",
+    "generate:check": "node scripts/generate.mjs --check",
+    "build": "npm run generate && tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@intuition-ui/core": "0.0.0",
+    "@lit/react": "^1.0.8"
+  },
+  "peerDependencies": {
+    "@types/react": "^19.0.0",
+    "react": "^19.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@types/react": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.18",
+    "react": "^19.2.8"
+  }
+}
