@@ -1,0 +1,33 @@
+{
+  "name": "@intuition-ui/vue",
+  "version": "0.0.0",
+  "description": "Vue components for Intuition UI, generated from the Custom Elements Manifest.",
+  "license": "MIT",
+  "author": "Leonardo Nicolai Padilha",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "generate": "node scripts/generate.mjs",
+    "generate:check": "node scripts/generate.mjs --check",
+    "build": "npm run generate && tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@intuition-ui/core": "0.0.0"
+  },
+  "peerDependencies": {
+    "vue": "^3.5.0"
+  },
+  "devDependencies": {
+    "vue": "^3.5.43"
+  }
+}
