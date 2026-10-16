@@ -1,0 +1,35 @@
+{
+  "name": "@intuition-ui/svelte",
+  "version": "0.0.0",
+  "description": "Svelte 5 components for Intuition UI, generated from the Custom Elements Manifest.",
+  "license": "MIT",
+  "author": "Leonardo Nicolai Padilha",
+  "type": "module",
+  "svelte": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "svelte": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "generate": "node scripts/generate.mjs",
+    "generate:check": "node scripts/generate.mjs --check",
+    "build": "npm run generate && svelte-package -i src -o dist"
+  },
+  "dependencies": {
+    "@intuition-ui/core": "0.0.0"
+  },
+  "peerDependencies": {
+    "svelte": "^5.0.0"
+  },
+  "devDependencies": {
+    "@sveltejs/package": "^3.0.0",
+    "svelte": "^5.57.2"
+  }
+}
