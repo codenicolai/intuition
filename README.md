@@ -9,15 +9,16 @@ Agnostic, AI-first component library for web applications, built on Web Componen
 
 Each component is defined once by a **base signature** (the Custom Elements Manifest). From it derive the framework-agnostic implementation, idiomatic usage in React, Vue and Svelte, and documentation that helps AI tools generate correct code.
 
-> Status: Phase 2 (base signature). Not published yet.
+> Status: Phase 3 (framework ports). Not published yet.
 
 ## Packages
 
 | Package | Description |
 |---|---|
 | `@intuition-ui/core` | Web Components written with Lit |
-
-Framework ports (`@intuition-ui/react`, `@intuition-ui/vue`, `@intuition-ui/svelte`) arrive in Phase 3.
+| `@intuition-ui/react` | React components and JSX types, generated from the core manifest |
+| `@intuition-ui/vue` | Vue components, generated from the core manifest |
+| `@intuition-ui/svelte` | Svelte 5 components, generated from the core manifest |
 
 ## Usage (planned)
 
@@ -25,6 +26,38 @@ With a bundler:
 
 ```js
 import '@intuition-ui/core';
+```
+
+React:
+
+```tsx
+import { Button } from '@intuition-ui/react';
+
+<Button variant="secondary">Send</Button>;
+```
+
+Vue:
+
+```vue
+<script setup>
+import { IuButton } from '@intuition-ui/vue';
+</script>
+
+<template>
+  <iu-button variant="secondary">Send</iu-button>
+</template>
+```
+
+Do not add `iu-*` to Vue's `isCustomElement`: it makes Vue skip the port and render the raw element.
+
+Svelte:
+
+```svelte
+<script>
+  import { Button } from '@intuition-ui/svelte';
+</script>
+
+<Button variant="secondary">Send</Button>
 ```
 
 Without a bundler (plain HTML, Django, Flask, Rails):

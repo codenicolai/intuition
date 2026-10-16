@@ -16,6 +16,8 @@
 | [0012](0012-component-conventions.md) | Component conventions (styles, Shadow DOM, forms, Button API) | accepted | 1 |
 | [0013](0013-test-setup.md) | Test setup (tests outside `src`, esbuild, @open-wc/testing) | accepted | 1 |
 | [0014](0014-cross-framework-integration-tests.md) | Cross-framework integration tests (React, Vue, Svelte) for every major change | accepted | 1 |
+| [0015](0015-react-port-generated-from-the-manifest.md) | React port (`@intuition-ui/react`) generated from the manifest with `@lit/react` | accepted | 3 |
+| [0016](0016-vue-and-svelte-ports-generated-from-the-manifest.md) | Vue and Svelte ports generated from the manifest | accepted | 3 |
 
 ADRs record major decisions only (architecture, public API, tooling, process).
 
