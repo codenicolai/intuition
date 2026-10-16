@@ -5,7 +5,12 @@
       "!**/dist",
       "!**/node_modules",
       "!**/custom-elements.json",
-      "!e2e"
+      "!e2e",
+      "!**/*.generated.ts",
+      "!snapshots",
+      "!**/generated",
+      "!**/*.svelte",
+      "!**/.svelte-kit"
     ]
   },
   "formatter": {

@@ -15,7 +15,7 @@
     "build": "npm run build --workspaces --if-present",
     "dev": "web-dev-server",
     "test": "web-test-runner",
-    "lint": "biome check . && npm run manifest:check --workspaces --if-present",
+    "lint": "biome check . && npm run manifest:check --workspaces --if-present && npm run generate:check --workspaces --if-present",
     "format": "biome format --write ."
   },
   "devDependencies": {
