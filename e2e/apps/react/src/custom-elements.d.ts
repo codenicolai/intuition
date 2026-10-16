@@ -1,8 +1,6 @@
-import type { IuButton } from '@intuition-ui/core'
+// <iu-button> JSX types come from the generated React port.
+/// <reference types="@intuition-ui/react" />
 import type { DetailedHTMLProps, HTMLAttributes } from 'react'
-
-type IuButtonProps = DetailedHTMLProps<HTMLAttributes<IuButton>, IuButton> &
-  Partial<Pick<IuButton, 'variant' | 'size' | 'disabled' | 'type'>>
 
 type ProbeHandler = (event: CustomEvent<{ count: number; name: string }>) => void
 
@@ -16,7 +14,6 @@ type IuEventProbeProps = DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElem
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      'iu-button': IuButtonProps
       'iu-event-probe': IuEventProbeProps
     }
   }

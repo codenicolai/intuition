@@ -3,7 +3,8 @@ import path from 'node:path';
 
 /** Snapshots and results go to the repository root `snapshots/` (git-ignored). */
 export const SNAP_ROOT = path.resolve(import.meta.dirname, '../../snapshots');
-export const DATE = new Date().toISOString().slice(0, 10);
+// Local date (YYYY-MM-DD), so file names match the day of the run on the machine.
+export const DATE = new Date().toLocaleDateString('sv-SE');
 
 export function snapDir(...parts: string[]) {
   const dir = path.join(SNAP_ROOT, ...parts);

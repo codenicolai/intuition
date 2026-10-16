@@ -4,6 +4,8 @@ import { defineConfig } from 'vite';
 export default defineConfig({
   root: import.meta.dirname,
   plugins: [svelte()],
+  // The port resolves `svelte` from the monorepo root; force a single copy.
+  resolve: { dedupe: ['svelte'] },
   // One cache per app: the three apps share e2e/node_modules.
   cacheDir: '../../node_modules/.vite-svelte',
   server: { port: 4303, strictPort: true },
@@ -15,6 +17,7 @@ export default defineConfig({
       input: {
         form: `${import.meta.dirname}/index.html`,
         events: `${import.meta.dirname}/events.html`,
+        port: `${import.meta.dirname}/port.html`,
       },
     },
   },

@@ -11,6 +11,7 @@ Integration suite required by ADR 0014. Three minimal apps (no CSS) consume the 
 Every app has the same two pages:
 
 - `index.html`: `iu-button` inside a native form (name, e-mail, message; Send, Clear, Ghost `sm`).
+- `port.html`: the same form using the framework port (`<Button>` from `@intuition-ui/react`, `<iu-button>` from `@intuition-ui/vue` in kebab-case, `<Button>` from `@intuition-ui/svelte`). The Vue app compiles `PortFormPage.vue` without `isCustomElement` (two plugin instances in its Vite config).
 - `events.html`: `iu-event-probe` (test-only element in `shared/`) with four idiomatic listeners, one per event name spelling.
 
 ## Run
@@ -40,3 +41,6 @@ Results go to the repository root `snapshots/` (git-ignored), with the run date 
 
 - `tests/button.spec.ts`: rendering (variants, sizes, font, colors), proxy submit button, click submit with loading state, Enter submission, required validation, reset, ghost click, keyboard, visual snapshots.
 - `tests/events.spec.ts`: event naming experiment (`iu-press`, `iupress`, `iuPress`).
+- `tests/ports.spec.ts`: each port behaves like the raw element, logs no warnings and renders pixel-identical buttons.
+- `tests/vue-kebab.spec.ts`: `<iu-button>` compiles to the Vue port component, and `isCustomElement` would bypass it.
+- `tests/ports-report.spec.ts`: report for the thesis; same page with the raw element and with the port, code side by side and byte-identical screens (`snapshots/ports-report/`).

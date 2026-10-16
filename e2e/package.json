@@ -11,6 +11,9 @@
   },
   "dependencies": {
     "@intuition-ui/core": "file:../packages/core",
+    "@intuition-ui/react": "file:../packages/react",
+    "@intuition-ui/svelte": "file:../packages/svelte",
+    "@intuition-ui/vue": "file:../packages/vue",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "svelte": "^5.57.0",
@@ -24,6 +27,7 @@
     "@types/react-dom": "^19.2.7",
     "@vitejs/plugin-react": "^6.1.1",
     "@vitejs/plugin-vue": "^6.0.8",
+    "@vue/compiler-sfc": "^3.5.42",
     "typescript": "~6.0.2",
     "vite": "^8.3.0"
   }
